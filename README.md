@@ -62,6 +62,6 @@ ggplot(densities_df, aes(x = x, y = y)) +
   geom_line(size = 1) +
   geom_vline(aes(xintercept = xmean), mean_df, colour = "red") +
   facet_wrap(~ess, ncol = 1)
-
+ 
 ```
 
