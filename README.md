@@ -10,6 +10,15 @@ with that:
 
 
 ```r
+# ---
+# title: "ggplot2 example of fill density plot in R
+# author: "Patrice Tardif"
+# date: "2019-10-14"
+# context: Example for  by Catherine Périé for project_cc (climatic change)
+#
+# This example illustrates showing multiple densities with ggplot2 by displaying bands around the average
+# ---
+
 library(tidyverse)
 
 
@@ -39,14 +48,20 @@ densities_df <-
   )
 
 
+# Extract the mean per group (xbar) to allow ggplot to display a line where the group average is located
+mean_df <- densities_df %>% 
+  group_by(ess) %>% 
+  summarise(xmean = mean(xbar))
+
+
 # Plot data
 ggplot(densities_df, aes(x = x, y = y)) + 
   geom_area(data = filter(densities_df, gr_class == 'low'), fill = '#00AFBB') +
   geom_area(data = filter(densities_df, gr_class == 'middle'), fill = '#E7B800') +
   geom_area(data = filter(densities_df, gr_class == 'high'), fill = '#FC4E07') +
   geom_line(size = 1) +
+  geom_vline(aes(xintercept = xmean), mean_df, colour = "red") +
   facet_wrap(~ess, ncol = 1)
-
 
 ```
 
