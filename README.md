@@ -2,7 +2,7 @@
 This example illustrates showing multiple probability densities with ggplot2 by displaying bands of +/- 10% around the mean like this:
 
 
-<img src="doc/images/example_ggplot2_densities_plot_with_color_bands.png">
+<img src="doc/images/example_ggplot2_densities_plot_with_color_bands_and_means.png">
 
 
 with that:
@@ -62,6 +62,6 @@ ggplot(densities_df, aes(x = x, y = y)) +
   geom_line(size = 1) +
   geom_vline(aes(xintercept = xmean), mean_df, colour = "red") +
   facet_wrap(~ess, ncol = 1)
- 
+
 ```
 
