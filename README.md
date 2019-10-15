@@ -7,3 +7,12 @@ This example illustrates showing multiple densities with ggplot2 by displaying b
 
 with that:
 
+```r
+getwd()
+
+if(!file.exists("~/.Rprofile")) # only create if not already there
+  file.create("~/.Rprofile")    # (don't overwrite it)
+file.edit("~/.Rprofile")
+
+```
+
